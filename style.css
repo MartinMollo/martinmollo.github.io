@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+h1 {
+    color: rgb(223, 112, 112);
+    font-family: verdana;
+}
+
+h3 {
+    color: rgb(223, 112, 112);
+    font-family: verdana;
+}
+
+#texto {
+    color: rgb(155, 223, 112);
+}
+
+#palabra {
+    color: rgb(201, 216, 101);
+}
+
+form {
+    margin-bottom: 30px;
+
+}
+
+input {
+    margin-left: 10px;
+}
+
+* {
+
+    text-align: center;
+}
