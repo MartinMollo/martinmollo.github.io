@@ -18,6 +18,7 @@ let palabratexto = document.getElementById("palabra")
 let informacion = document.getElementById("informacion")
 let formulario = document.getElementById("formulario")
 let fusuario = document.getElementById("fusuario")
+let globo1 = document.getElementById("globo1")
 //creamos el array de respuestas
 const respuestas = []
 respuestas.push(new respuesta("auto", "a", "u", "t", "o"))
@@ -49,6 +50,7 @@ fusuario.addEventListener("submit", (e) => {
     usuario = fusuario.children[0].value
     localStorage.setItem("usuario", usuario)
     texto.innerText = "bienvenido " + usuario + "\n ingrese una letra para adivinar"
+    fusuario.reset()
 })
 // elegimos una palabra al azar
 let numpalabra = Math.floor(Math.random() * 6)
@@ -87,7 +89,7 @@ formulario.addEventListener("submit", (e) => {
             //informo al jugador si la letra esta en la palabra
             console.log(intentos)
             if (correcto) {
-                texto.innerText = adivinaletra + " esta en la palabra, " + usuario + "ingrese otra letra"
+                texto.innerText = adivinaletra + " esta en la palabra, " + usuario + " ingrese otra letra"
                 palabratexto.innerText = letrasincognita
                 informacion.innerText = "   intentos: " + intentos + " | letras que no estan: " + fallos
             } else {
@@ -113,6 +115,7 @@ formulario.addEventListener("submit", (e) => {
     } else {
         window.location.reload();
     }
+    formulario.reset()
 })
 //limpia el localstorage
 document.getElementById("borrar").addEventListener("click", () => {
