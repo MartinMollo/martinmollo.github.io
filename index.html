@@ -5,25 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Juego del ahorcado</title>
 </head>
 
 <body>
+    <div class="time-content">
+        <h5></h5>
+    </div>
     <h1>JUEGO DEL AHORCADO</h1>
-    <h1 id="texto"></h1>
-    <h1 id="palabra"></h1>
-    <form id="formulario">
-        <input type="text" size="5" minlength="1" maxlength="1"
-            onkeypress="return 'abcdefghijklmnñopqrstuvwxyz'.includes(event.key)" required>
-        <input id="aceptar" type="submit" value="aceptar">
-    </form>
-    <h3 id="informacion"></h3>
-    <form id="fusuario">
-        <input type="text" size="20" minlength="1" maxlength="20" required>
-        <input id="aceptar2" type="submit" value="cambiar de usuario">
-    </form>
-    <button id="borrar">limpiar local storage</button>
+    <section class="todo">
+        <div class="titulos">
+
+            
+            <h2 id="texto"></h2>
+        </div>
+        <div class="contenido">
+            <h3 id="palabra"></h3>
+            <form id="formulario" class="form1">
+                <input type="text" size="5" minlength="1" maxlength="1"
+                    onkeypress="return 'abcdefghijklmnñopqrstuvwxyz'.includes(event.key)" required>
+                <input id="aceptar" type="submit" value="aceptar">
+            </form>
+            <h3 id="informacion"></h3>
+        </div>
+        <div class="extra">
+            <form id="fusuario" class="form2">
+                <input type="text" size="20" minlength="1" maxlength="20" required>
+                <input id="aceptar2" type="submit" value="cambiar de usuario">
+            </form>
+            <button id="borrar">limpiar local storage</button>
+        </div>
+    </section>
     <script src="main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>

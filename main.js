@@ -9,6 +9,8 @@ class respuesta {
         this.letra4 = letra4;
     }
 }
+// url de la pagina del horario
+let url = "http://worldtimeapi.org/api/timezone/America/Argentina/Buenos_Aires"
 let adivinaletra
 let correcto
 let solucion
@@ -27,15 +29,17 @@ respuestas.push(new respuesta("caro", "c", "a", "r", "o"))
 respuestas.push(new respuesta("cruz", "c", "r", "u", "z"))
 respuestas.push(new respuesta("pelo", "p", "e", "l", "o"))
 respuestas.push(new respuesta("ruta", "r", "u", "t", "a"))
-// guardo las palabras y letras en localstorage
-const rtajson = JSON.stringify(respuestas)
-localStorage.setItem("respuestas", rtajson)
 let terminar = true
 let intentos = 6
 let fallos = []
 let letras = []
 let letrasincognita = ["_", "_", "_", "_"]
 let usuario
+//con el fetch agarro la informacion del url
+fetch(url)
+    .then((Response) => Response.json())
+    .then((data) => render(data))
+    .catch((error) => console.log(error))
 //si hay usuario en local lo guardo si no sera "nuevo usuario"
 const usuarioenls = localStorage.getItem("usuario")
 if (usuarioenls != null) {
@@ -51,6 +55,13 @@ fusuario.addEventListener("submit", (e) => {
     localStorage.setItem("usuario", usuario)
     texto.innerText = "bienvenido " + usuario + "\n ingrese una letra para adivinar"
     fusuario.reset()
+    // aviso que se guardo el usuario
+    Toastify({
+        text: "usuario guardado",
+        className: "info",
+        gravity: "top",
+        position: "right"
+    }).showToast();
 })
 // elegimos una palabra al azar
 let numpalabra = Math.floor(Math.random() * 6)
@@ -60,11 +71,11 @@ letras.push(respuestas[numpalabra].letra2)
 letras.push(respuestas[numpalabra].letra3)
 letras.push(respuestas[numpalabra].letra4)
 //informacion para verificar si el programa funciona
-console.log(respuestas[numpalabra].palabra)
+console.log(respuestas[numpalabra].palabra) //sacaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalo
 // informo al jugador por el DOM
 texto.innerText = "bienvenido " + usuario + "\n ingrese una letra para adivinar"
 palabratexto.innerText = letrasincognita
-informacion.innerText = "   intentos: " + intentos + " | letras que no estan: " + fallos
+informacion.innerText = "   intentos: " + intentos + " \n letras que no estan:\n " + fallos
 //formulario de la letra a ingresar
 formulario.addEventListener("submit", (e) => {
     if (terminar) {
@@ -91,11 +102,11 @@ formulario.addEventListener("submit", (e) => {
             if (correcto) {
                 texto.innerText = adivinaletra + " esta en la palabra, " + usuario + " ingrese otra letra"
                 palabratexto.innerText = letrasincognita
-                informacion.innerText = "   intentos: " + intentos + " | letras que no estan: " + fallos
+                informacion.innerText = "   intentos: " + intentos + " \n letras que no estan:\n " + fallos
             } else {
                 texto.innerText = adivinaletra + " no esta en la palabra, " + usuario + " ingrese otra letra"
                 palabratexto.innerText = letrasincognita
-                informacion.innerText = "   intentos: " + intentos + " | letras que no estan: " + fallos
+                informacion.innerText = "   intentos: " + intentos + " \n letras que no estan:\n " + fallos
             }
         }
         //vemos si el jugador gano el juego
@@ -103,12 +114,12 @@ formulario.addEventListener("submit", (e) => {
             if (intentos != 0) {
                 texto.innerText = "felicidades " + usuario + ", ganaste el juego.\n pulse aceptar para volver a jugar"
                 palabratexto.innerText = "la palabra era: " + respuestas[numpalabra].palabra
-                informacion.innerText = "   intentos: " + intentos + " | letras que no estan: " + fallos
+                informacion.innerText = "   intentos: " + intentos + " \n letras que no estan:\n " + fallos
                 terminar = false
             } else {
                 texto.innerText = "que lastima " + usuario + ", perdiste el juego te quedaste sin intentos.\n pulse aceptar para volver a jugar"
                 palabratexto.innerText = "la palabra era: " + respuestas[numpalabra].palabra
-                informacion.innerText = "   intentos: " + intentos + " | letras que no estan: " + fallos
+                informacion.innerText = "   intentos: " + intentos + " \n letras que no estan:\n " + fallos
                 terminar = false
             }
         }
@@ -120,10 +131,24 @@ formulario.addEventListener("submit", (e) => {
 //limpia el localstorage
 document.getElementById("borrar").addEventListener("click", () => {
     localStorage.clear()
+    //aviso que se limpio el storage
+    Toastify({
+        text: "storage vaciado",
+        className: "info",
+        gravity: "top", 
+        position: "right", 
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+    }).showToast();
 })
-//funcion
+//funcion/es
 function buscar(adivinaletra, letras) {
     let ubicacion = letras.indexOf(adivinaletra)
     console.log(adivinaletra)
     return ubicacion
+}
+function render(data) {
+    //aplico el dia y la hora al dom
+    document.querySelector("h5").innerText = data.datetime
 }

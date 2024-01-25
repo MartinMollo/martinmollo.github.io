@@ -1,35 +1,106 @@
+html,
 body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
     background-color: rgb(0, 0, 0);
 }
 
+body {
+    height: 100%;
+    color: white
+}
+
+section.todo {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border: 2px solid rgb(10, 78, 10);
+    border-radius: 50px;
+}
+
+.titulos {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid rgb(104, 61, 6);
+    border-radius: 50px;
+}
+
+.contenido {
+    width: 300px;
+    flex-direction: center;
+    justify-content: center;
+    border: 2px solid rgb(107, 97, 10);
+    border-radius: 50px;
+}
+
+.extra {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    border-style: solid;
+    border: 2px solid rgb(6, 61, 112);
+    border-radius: 50px;
+}
+
+.form1 {
+    height: 10%;
+    width: 25%;
+    margin-bottom: 50px;
+    margin-left: 40%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form2 {
+    height: 10%;
+    width: 25%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 25%;
+    align-items: center;
+}
+
+
+input {
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+    margin-left: 25%;
+}
+
 h1 {
-    color: rgb(223, 112, 112);
-    font-family: verdana;
+    font-family: 'Franklin Gothic Medium';
+    font-size: 50px;
+    color: rgb(35, 151, 27);
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Franklin Gothic Medium';
+    font-size: 30px;
+    text-align: center;
+    color: rgb(219, 147, 52);
+    margin: 20px;
 }
 
 h3 {
-    color: rgb(223, 112, 112);
-    font-family: verdana;
-}
-
-#texto {
-    color: rgb(155, 223, 112);
-}
-
-#palabra {
-    color: rgb(201, 216, 101);
-}
-
-form {
-    margin-bottom: 30px;
-
-}
-
-input {
-    margin-left: 10px;
-}
-
-* {
-
+    font-family: 'Franklin Gothic Medium';
+    font-size: 30px;
     text-align: center;
+    color: rgb(211, 193, 32);
+}
+
+h5 {
+    font-family: 'Franklin Gothic Medium';
+    font-size: 15px;
+    text-align: left;
+    color: rgb(98, 99, 98);
+    margin-left: 20px;
 }
