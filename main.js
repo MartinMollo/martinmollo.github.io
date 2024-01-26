@@ -70,8 +70,6 @@ letras.push(respuestas[numpalabra].letra1)
 letras.push(respuestas[numpalabra].letra2)
 letras.push(respuestas[numpalabra].letra3)
 letras.push(respuestas[numpalabra].letra4)
-//informacion para verificar si el programa funciona
-console.log(respuestas[numpalabra].palabra) //sacaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalo
 // informo al jugador por el DOM
 texto.innerText = "bienvenido " + usuario + "\n ingrese una letra para adivinar"
 palabratexto.innerText = letrasincognita
